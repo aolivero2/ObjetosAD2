@@ -6,7 +6,9 @@
 
 package interfaz;
 
+import clase.DenominadorCeroException;
 import clase.Fraccionario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -115,6 +117,7 @@ public class Principal extends javax.swing.JFrame {
        n2=  Integer.parseInt (txtNumerador2.getText());
        d2=  Integer.parseInt (txtDenominador2.getText());
        
+       try{
        f1 = new Fraccionario (n1,d1);
        f2 = new Fraccionario (n2,d2);
        
@@ -135,6 +138,9 @@ public class Principal extends javax.swing.JFrame {
             }
           txtNumerador3.setText(""+f3.getNumerador());
           txtDenominador3.setText(""+f3.getDenominador());
+       }catch (DenominadorCeroException e){
+           JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+       }
     
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
@@ -144,10 +150,12 @@ public class Principal extends javax.swing.JFrame {
         txtNumerador3.setText("");
         txtDenominador1.setText("");
         txtDenominador2.setText("");
-        txtDenominador2.setText("");
+        txtDenominador3.setText("");
         
         txtNumerador1.requestFocusInWindow();
         cmbOperacion.setSelectedIndex(0);
+        
+        
                 
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
